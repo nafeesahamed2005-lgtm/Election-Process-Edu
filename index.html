@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Democracy Lab - Election Process Education</title>
+    <meta name="description" content="Learn about the democratic election process through this interactive prototype.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../static/css/style.css">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <div class="background-elements">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <header class="glass-header">
+        <div class="logo">
+            <i class="ph ph-check-square-offset"></i>
+            <span>DemocracyLab</span>
+        </div>
+        <nav>
+            <div class="phase-indicator" id="nav-phase">
+                Phase: <span class="badge" id="current-phase-badge">Registration</span>
+            </div>
+            <button id="reset-btn" class="btn btn-outline">Reset Simulation</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero glass-card" id="hero-section">
+            <h1 class="gradient-text">How Do Elections Work?</h1>
+            <p>Welcome to DemocracyLab, an interactive prototype designed to educate you on the core phases of a democratic election. Follow the steps below to experience the process.</p>
+            <div class="hero-actions">
+                <button class="btn btn-primary" onclick="scrollToSection('phases')">Start Learning</button>
+            </div>
+        </section>
+
+        <!-- Educational Phases Section -->
+        <section class="phases-container" id="phases">
+            <div class="phase-card glass-card active" id="card-registration">
+                <div class="phase-icon"><i class="ph ph-identification-card"></i></div>
+                <h2>1. Registration</h2>
+                <p>Before an election, eligible citizens must register to vote. This ensures that only authorized individuals can cast a ballot and prevents fraud.</p>
+                <button class="btn btn-secondary phase-advance" data-next="campaigning">Advance to Campaigning</button>
+            </div>
+
+            <div class="phase-card glass-card" id="card-campaigning">
+                <div class="phase-icon"><i class="ph ph-megaphone"></i></div>
+                <h2>2. Campaigning</h2>
+                <p>Candidates share their platforms and try to win the support of the voters. This involves debates, advertising, and rallies.</p>
+                <div class="candidate-preview" id="candidate-list-preview">
+                    <!-- Populated by JS -->
+                </div>
+                <button class="btn btn-secondary phase-advance" data-next="voting">Start Voting Phase</button>
+            </div>
+
+            <div class="phase-card glass-card" id="card-voting">
+                <div class="phase-icon"><i class="ph ph-envelope-simple"></i></div>
+                <h2>3. Voting</h2>
+                <p>On election day, registered voters cast their ballots. In this simulation, you can cast your vote and simulate others voting.</p>
+                <div class="voting-booth" id="voting-booth" style="display: none;">
+                    <h3>Cast Your Ballot</h3>
+                    <div class="ballot" id="ballot-options">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                <div class="voting-actions mt-4">
+                    <button class="btn btn-outline" id="simulate-votes-btn" style="display: none;">Simulate 100+ Votes</button>
+                    <button class="btn btn-primary phase-advance" data-next="results" id="end-voting-btn" style="display: none;">End Voting & Tally</button>
+                </div>
+            </div>
+
+            <div class="phase-card glass-card" id="card-results">
+                <div class="phase-icon"><i class="ph ph-chart-bar"></i></div>
+                <h2>4. Results</h2>
+                <p>After polls close, votes are tallied. The candidate with the most votes wins the election.</p>
+                <div class="results-dashboard" id="results-dashboard">
+                    <!-- Populated by JS -->
+                    <div class="progress-container">
+                        <span>Turnout: <span id="turnout-text">0%</span></span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="turnout-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="winner-announcement" id="winner-announcement" style="display: none;">
+                        <h3 class="gradient-text">Winner: <span id="winner-name"></span></h3>
+                    </div>
+                    <div class="bars-chart" id="bars-chart">
+                        <!-- Bars populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="glass-footer">
+        <p>&copy; 2026 DemocracyLab Prototype. Built with HTML, CSS & Vanilla JS.</p>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden">Message</div>
+
+    <script src="../static/js/script.js"></script>
+</body>
+</html>
